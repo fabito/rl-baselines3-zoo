@@ -571,12 +571,12 @@ neyboy-v0:
 
   frame_stack: 4
   policy: 'CnnPolicy'
-  n_envs: 8
-  n_steps: 128
-  n_epochs: 4
-  batch_size: 4096
+  n_envs: 16
+  n_steps: 512
+  n_epochs: 10
+  batch_size: 64
   n_timesteps: !!float 1e7
-  learning_rate: lin_2.5e-4
-  clip_range: lin_0.1
+  learning_rate: lin_3e-4
+  clip_range: lin_0.2
   vf_coef: 0.5
-  ent_coef: 0.01
+  ent_coef: 0.0
