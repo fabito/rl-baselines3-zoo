@@ -37,3 +37,8 @@ try:
     import gym_neyboy  # pytype: disable=import-error
 except ImportError:
     gym_neyboy = None
+
+try:
+    import gym_flappybird  # pytype: disable=import-error
+except ImportError:
+    gym_flappybird = None
