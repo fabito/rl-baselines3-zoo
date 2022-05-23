@@ -606,11 +606,11 @@ neyboy-v0:
 flappybird-v0:
   env_wrapper:
     - stable_baselines3.common.atari_wrappers.MaxAndSkipEnv:
-        skip: 2
+        skip: 3
     - stable_baselines3.common.atari_wrappers.WarpFrame
   frame_stack: 4
   policy: 'CnnPolicy'
-  n_envs: 4
+  n_envs: 16
   n_steps: 512
   gamma: 0.95
   gae_lambda: 0.8
