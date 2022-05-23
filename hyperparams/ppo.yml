@@ -603,15 +603,14 @@ neyboy-v0:
                      net_arch=[dict(pi=[256, 256], vf=[256, 256])]
                    )"
 
-
 flappybird-v0:
   env_wrapper:
     - stable_baselines3.common.atari_wrappers.MaxAndSkipEnv:
-        skip: 4
+        skip: 2
     - stable_baselines3.common.atari_wrappers.WarpFrame
   frame_stack: 4
   policy: 'CnnPolicy'
-  n_envs: 2
+  n_envs: 4
   n_steps: 512
   gamma: 0.95
   gae_lambda: 0.8
@@ -624,7 +623,7 @@ flappybird-v0:
   clip_range: 0.2
   ent_coef: 0.03602127443154849
   policy_kwargs: "dict(
-                     ortho_init=True,
+                     ortho_init=False,
                      activation_fn=nn.ReLU,
                      net_arch=[dict(pi=[256, 256], vf=[256, 256])]
                    )"

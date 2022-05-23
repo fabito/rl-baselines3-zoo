@@ -39,6 +39,8 @@ def sample_ppo_params(trial: optuna.Trial) -> Dict[str, Any]:
     # activation_fn = trial.suggest_categorical('activation_fn', ['tanh', 'relu', 'elu', 'leaky_relu'])
     activation_fn = trial.suggest_categorical("activation_fn", ["tanh", "relu"])
 
+    frame_skip = trial.suggest_categorical("skip", [1, 2, 3, 4, 8])
+
     # TODO: account when using multiple envs
     if batch_size > n_steps:
         batch_size = n_steps
@@ -56,6 +58,14 @@ def sample_ppo_params(trial: optuna.Trial) -> Dict[str, Any]:
     activation_fn = {"tanh": nn.Tanh, "relu": nn.ReLU, "elu": nn.ELU, "leaky_relu": nn.LeakyReLU}[activation_fn]
 
     return {
+        "env_wrapper": [
+            {
+                "stable_baselines3.common.atari_wrappers.MaxAndSkipEnv": {
+                    "skip": frame_skip
+                }
+            },
+            "stable_baselines3.common.atari_wrappers.WarpFrame"
+        ],
         "n_steps": n_steps,
         "batch_size": batch_size,
         "gamma": gamma,

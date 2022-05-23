@@ -1,4 +1,4 @@
-gym==0.21
+gym==0.23.1
 stable-baselines3[extra,tests,docs]>=1.5.0
 sb3-contrib>=1.5.0
 box2d-py==2.3.8
@@ -15,5 +15,5 @@ panda-gym==1.1.1 # tmp fix: until compatibility with panda-gym v2
 rliable>=1.0.5
 wandb
 ale-py==0.7.4 # tmp fix: until new SB3 version is released
-git+https://github.com/fabito/gym-neyboy.git
-git+https://github.com/fabito/gym-flappybird.git
+gym-neyboy @ git+https://github.com/fabito/gym-neyboy.git
+gym-flappybird @ git+https://github.com/fabito/gym-flappybird.git
