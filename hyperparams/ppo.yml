@@ -582,7 +582,8 @@ neyboy-v0:
     - stable_baselines3.common.atari_wrappers.MaxAndSkipEnv:
         skip: 4
     - stable_baselines3.common.atari_wrappers.WarpFrame
-
+  callback:
+    - utils.callbacks.ImageRecorderCallback
   frame_stack: 4
   policy: 'CnnPolicy'
   n_envs: 16
@@ -608,10 +609,12 @@ flappybird-v0:
     - stable_baselines3.common.atari_wrappers.MaxAndSkipEnv:
         skip: 3
     - stable_baselines3.common.atari_wrappers.WarpFrame
+  callback:
+    - utils.callbacks.ImageRecorderCallback
   frame_stack: 4
   batch_size: 32
   policy: 'CnnPolicy'
-  n_envs: 16
+  n_envs: 6
   n_steps: 256
   gamma: 0.95
   gae_lambda: 0.99

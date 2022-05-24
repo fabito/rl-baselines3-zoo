@@ -10,7 +10,7 @@ import optuna
 from sb3_contrib import TQC
 from stable_baselines3 import SAC
 from stable_baselines3.common.callbacks import BaseCallback, EvalCallback
-from stable_baselines3.common.logger import TensorBoardOutputFormat
+from stable_baselines3.common.logger import TensorBoardOutputFormat, Image
 from stable_baselines3.common.vec_env import VecEnv
 
 
@@ -226,4 +226,14 @@ class RawStatisticsCallback(BaseCallback):
                 self._timesteps_counter += info["episode"]["l"]
                 self._tensorboard_writer.write(logger_dict, exclude_dict, self._timesteps_counter)
 
+        return True
+
+
+class ImageRecorderCallback(BaseCallback):
+    def __init__(self, verbose=0):
+        super(ImageRecorderCallback, self).__init__(verbose)
+
+    def _on_step(self):
+        image = self.training_env.render(mode="rgb_array")
+        self.logger.record("trajectory/image", Image(image, "HWC"), exclude=("stdout", "log", "json", "csv"))
         return True
