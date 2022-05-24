@@ -55,7 +55,7 @@ def sample_ppo_params(trial: optuna.Trial) -> Dict[str, Any]:
 
     activation_fn = {"tanh": nn.Tanh, "relu": nn.ReLU, "elu": nn.ELU, "leaky_relu": nn.LeakyReLU}[activation_fn]
 
-    frame_skip = trial.suggest_categorical("skip", [1, 2, 3, 4, 8])
+    # frame_skip = trial.suggest_categorical("skip", [1, 2, 3, 4, 8])
 
     return {
         # "env_wrapper": [
